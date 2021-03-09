@@ -15,7 +15,7 @@ describe("check good flow of the app",()=>{
     driver.changeAmountInput("51")
     driver.changeExpenseOrIncomeSelector("income")
     driver.clickAdd()
-    // expect(wrapper.queryByTestId("total-expenses")?.innerHTML).toBe("Total: 51")
+    expect(wrapper.queryByTestId("total-expenses")?.innerHTML).toBe("Total: 51")
     
   });
 })
