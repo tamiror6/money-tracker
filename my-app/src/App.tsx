@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h2 data-testid="app-title">Money Tracker</h2>
-      <h2 data-testid="total-expenses">Total: {total}</h2>
+      <h2 >Total: <span data-testid="total-money">{total}</span></h2>
       <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>
       <select data-testid="income-expense-selctor"></select>
       <button data-testid="add-btn" onClick={()=>{

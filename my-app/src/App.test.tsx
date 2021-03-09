@@ -11,11 +11,15 @@ describe("check good flow of the app",()=>{
   })
   test('general flow of app', () => {
     expect(wrapper.queryByTestId("app-title")?.innerHTML).toBe("Money Tracker")
-    expect(wrapper.queryByTestId("total-expenses")?.innerHTML).toBe("Total: 0")
+    expect(driver.getTotalMoney()).toBe("0")
     driver.changeAmountInput("51")
     driver.changeExpenseOrIncomeSelector("income")
     driver.clickAdd()
-    expect(wrapper.queryByTestId("total-expenses")?.innerHTML).toBe("Total: 51")
+    expect(driver.getTotalMoney()).toBe("51")
+    driver.changeAmountInput("5")
+    driver.changeExpenseOrIncomeSelector("income")
+    driver.clickAdd()
+    expect(driver.getTotalMoney()).toBe("56")
     
   });
 })

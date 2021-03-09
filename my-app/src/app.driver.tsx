@@ -4,6 +4,7 @@ export interface IAppDriver{
     clickAdd():void,
     changeAmountInput(amount:string):void,
     changeExpenseOrIncomeSelector(expenseOrIncome: string): void,
+    getTotalMoney():string|undefined
 
 }
 export const appDriver=(wrapper:RenderResult):IAppDriver=>{
@@ -17,7 +18,10 @@ export const appDriver=(wrapper:RenderResult):IAppDriver=>{
     }
     const changeExpenseOrIncomeSelector = (expenseOrIncome:string)=>{
         const incomeOrExpense = wrapper.getByTestId("income-expense-selctor")
-    fireEvent.change(incomeOrExpense, { target: { value: expenseOrIncome} })
+        fireEvent.change(incomeOrExpense, { target: { value: expenseOrIncome} })
     }
-    return {clickAdd,changeAmountInput,changeExpenseOrIncomeSelector}
+    const getTotalMoney = ()=>{
+        return wrapper.queryByTestId("total-money")?.innerHTML
+    }
+    return {clickAdd,changeAmountInput,changeExpenseOrIncomeSelector,getTotalMoney}
 }
