@@ -12,7 +12,7 @@ function App() {
       <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>
       <select data-testid="income-expense-selctor"></select>
       <button data-testid="add-btn" onClick={()=>{
-        setTotal(Number(amountInput))
+        setTotal(total + Number(amountInput))
       }}></button>
     </div>
   );
