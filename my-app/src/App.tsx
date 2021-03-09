@@ -5,7 +5,7 @@ import './App.scss';
 function App() {
   return (
     <div className="App">
-      
+      <h2 data-testid="app-title"></h2>
     </div>
   );
 }
