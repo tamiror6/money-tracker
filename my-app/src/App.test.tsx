@@ -22,5 +22,6 @@ describe("check good flow of the app",()=>{
     expect(driver.getTotalMoney()).toBe("56")
     expect(wrapper.queryAllByTestId("money-change-row").length).toBe(2)
     
+    
   });
 })

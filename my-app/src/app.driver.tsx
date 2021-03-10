@@ -23,5 +23,6 @@ export const appDriver=(wrapper:RenderResult):IAppDriver=>{
     const getTotalMoney = ()=>{
         return wrapper.queryByTestId("total-money")?.innerHTML
     }
+    
     return {clickAdd,changeAmountInput,changeExpenseOrIncomeSelector,getTotalMoney}
 }
