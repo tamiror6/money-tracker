@@ -10,7 +10,7 @@ describe("check good flow of the app",()=>{
     driver = appDriver(wrapper)
   })
   test('general flow of app', () => {
-    expect(wrapper.queryByTestId("app-title")?.innerHTML).toBe("Money Tracker")
+    expect(wrapper.queryByTestId("app-title")?.textContent).toBe("Money Tracker")
     expect(driver.getTotalMoney()).toBe("0")
     driver.changeAmountInput("51")
     driver.changeExpenseOrIncomeSelector("income")
@@ -22,7 +22,7 @@ describe("check good flow of the app",()=>{
     expect(driver.getTotalMoney()).toBe("56")
     expect(wrapper.queryAllByTestId("money-change-row").length).toBe(2)
     expect(wrapper.queryByText("51")).not.toBeNull()
-    expect(wrapper.queryAllByTestId("action-date")[0].innerHTML).toEqual(new Date().toLocaleDateString())
+    expect(wrapper.queryAllByTestId("action-date")[0].textContent).toEqual(new Date().toLocaleDateString())
     
     
   });

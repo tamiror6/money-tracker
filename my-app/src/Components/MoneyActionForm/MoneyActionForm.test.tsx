@@ -10,9 +10,8 @@ describe("check form changing",()=>{
     wrapper = render(<MoneyActionForm onAdd={onAddMocked}/>)
     driver = formDriver(wrapper)
   })
-  describe('when form renders', () => {
-    it("should have all the elements correctly and inputs need to be updated after user change inputs",()=>{
-      expect(driver.getSelectedIncomeOrExpense()).toBe(ActionSelections.NOT_SELECTED)
+
+    it("should change correctly and inputs need to be updated after user change inputs",()=>{
       driver.changeExpenseOrIncomeSelector(ActionSelections.EXPENSE)
       expect(driver.getSelectedIncomeOrExpense()).toBe(ActionSelections.EXPENSE)
       driver.changeExpenseOrIncomeSelector(ActionSelections.INCOME)
@@ -31,11 +30,22 @@ describe("check form changing",()=>{
       driver.changeExpenseOrIncomeSelector(ActionSelections.EXPENSE)
       driver.clickAdd()
       expect(onAddMocked).toHaveBeenCalledWith(-100)
+    })
 
+    it("shouldnt be called if invalid amount or don't choose expense or income", ()=>{
+      driver.changeAmountInput("22")
+      driver.clickAdd()
+      driver.changeAmountInput("aaa")
+      driver.changeExpenseOrIncomeSelector(ActionSelections.EXPENSE)
+      driver.clickAdd()
+      expect(onAddMocked).toHaveBeenCalledTimes(0)
+
+
+      
     })
 
 
 
     
-  });
+
 })
