@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Component } from "react";
 export interface IMoneyActionFormProps{
-    onAdd(amountInput:string):void
+    onAdd(amountInput:number):void
 }
 
 export enum ActionSelections{
@@ -11,7 +11,7 @@ export enum ActionSelections{
 export const MoneyActionForm:React.FC<IMoneyActionFormProps> = (props) => {
     const [amountInput,setAmountInput] = useState<string>("")
     const [actionKind,setActionKind] = useState<string>(ActionSelections.NOT_SELECTED)
-
+    const handleAddition = ()=>{props.onAdd(Number(amountInput))}
     return (
       <div>
         <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>
@@ -20,7 +20,7 @@ export const MoneyActionForm:React.FC<IMoneyActionFormProps> = (props) => {
           <option key={index}>{val}</option>
         ))}
       </select>
-      <button data-testid="add-btn" onClick={()=>{props.onAdd(amountInput)}}>Add</button>
+      <button data-testid="add-btn" onClick={handleAddition}>Add</button>
       </div>
     );
   };
