@@ -20,7 +20,7 @@ describe("check good flow of the app",()=>{
     driver.changeExpenseOrIncomeSelector("income")
     driver.clickAdd()
     expect(driver.getTotalMoney()).toBe("56")
-    // expect(wrapper.queryAllByTestId("money-change-row").length).toBe(2)
+    expect(wrapper.queryAllByTestId("money-change-row").length).toBe(2)
     
   });
 })
