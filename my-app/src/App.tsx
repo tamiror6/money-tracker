@@ -16,7 +16,7 @@ function App() {
       <h2 >Total: <span data-testid="total-money">{total}</span></h2>
         <div>
         {moneyActions.map((action,index) =>{
-          return <Action key={index}/>
+          return <Action key={index} amount={action.amount}/>
         })}
         </div>
       <MoneyActionForm onAdd={handleAddition}/>
