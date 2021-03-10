@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+
+
 interface IActionProps{
     action:Iaction
 }
 export interface Iaction{
-    amount:string,
+    amount:number,
     date:string,
   }
 export const Action:React.FC<IActionProps> = ({action}) => {

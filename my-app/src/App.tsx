@@ -6,7 +6,7 @@ import {Action, Iaction} from "./Components/Action/Action"
 function App() {
   const [total,setTotal] = useState<number>(0)
   const [moneyActions,setMoneyActions] = useState<Iaction[]>([])
-  const handleAddition = (amountInput:string)=>{
+  const handleAddition = (amountInput:number)=>{
       setTotal(total+Number(amountInput))
       const newMoneyActions = [{amount:amountInput, date:new Date().toLocaleDateString()},...moneyActions]
       setMoneyActions(newMoneyActions)}

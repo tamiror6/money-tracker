@@ -11,7 +11,18 @@ export enum ActionSelections{
 export const MoneyActionForm:React.FC<IMoneyActionFormProps> = (props) => {
     const [amountInput,setAmountInput] = useState<string>("")
     const [actionKind,setActionKind] = useState<string>(ActionSelections.NOT_SELECTED)
-    const handleAddition = ()=>{props.onAdd(Number(amountInput))}
+    const handleAddition = ()=>{
+      switch (actionKind) {
+        case ActionSelections.NOT_SELECTED:
+          break;
+        case ActionSelections.INCOME:
+            props.onAdd(Number(amountInput))
+            break;
+        case ActionSelections.EXPENSE:
+          props.onAdd((-1)*Number(amountInput))
+          break;
+      }
+      }
     return (
       <div>
         <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>
