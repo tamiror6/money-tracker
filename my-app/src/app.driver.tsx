@@ -9,19 +9,19 @@ export interface IAppDriver{
 }
 export const appDriver=(wrapper:RenderResult):IAppDriver=>{
     const clickAdd=()=>{
-        const addButton = wrapper.getByTestId("add-btn")
+    const addButton = wrapper.getByTestId("add-btn")
     fireEvent.click(addButton)
     } 
     const changeAmountInput = (amount:string)=>{
         const amountInput = wrapper.getByTestId("amount")
-    fireEvent.change(amountInput, { target: { value: amount } })
+        fireEvent.change(amountInput, { target: { value: amount } })
     }
     const changeExpenseOrIncomeSelector = (expenseOrIncome:string)=>{
         const incomeOrExpense = wrapper.getByTestId("income-expense-selctor")
         fireEvent.change(incomeOrExpense, { target: { value: expenseOrIncome} })
     }
     const getTotalMoney = ()=>{
-        return wrapper.queryByTestId("total-money")?.innerHTML
+        return wrapper.queryByTestId("total-money")?.textContent!
     }
     
     return {clickAdd,changeAmountInput,changeExpenseOrIncomeSelector,getTotalMoney}

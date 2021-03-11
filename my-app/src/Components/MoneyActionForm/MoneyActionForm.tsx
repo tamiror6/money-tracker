@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState} from "react";
 export interface IMoneyActionFormProps{
     onAdd(amountInput:number):void
 }
@@ -11,18 +11,25 @@ export enum ActionSelections{
 export const MoneyActionForm:React.FC<IMoneyActionFormProps> = (props) => {
     const [amountInput,setAmountInput] = useState<string>("")
     const [actionKind,setActionKind] = useState<string>(ActionSelections.NOT_SELECTED)
+    const isNumeric = (str:string)=> { 
+      return !isNaN(parseFloat(str)) 
+    }
     const handleAddition = ()=>{
-      switch (actionKind) {
-        case ActionSelections.NOT_SELECTED:
-          break;
-        case ActionSelections.INCOME:
-            props.onAdd(Number(amountInput))
-            break;
-        case ActionSelections.EXPENSE:
-          props.onAdd((-1)*Number(amountInput))
-          break;
+        if(isNumeric(amountInput)){
+          switch (actionKind) {
+            case ActionSelections.NOT_SELECTED:
+              break;
+            case ActionSelections.INCOME:
+                props.onAdd(Number(amountInput))
+                break;
+            case ActionSelections.EXPENSE:
+              props.onAdd((-1)*Number(amountInput))
+              break;
+          }
+        }
       }
-      }
+
+     
     return (
       <div>
         <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>

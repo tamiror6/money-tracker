@@ -1,0 +1,11 @@
+.action-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .date {
+    margin-right: 10px;
+  }
+  .amount {
+    font-weight: bold;
+  }
+}
