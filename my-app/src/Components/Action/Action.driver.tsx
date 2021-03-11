@@ -2,7 +2,6 @@ import { RenderResult } from "@testing-library/react"
 
 export interface IActionDriver{
             getDate():string,
-
         }
 export const actionDriver=(wrapper:RenderResult)=>{
     const getDate = ():string=>{

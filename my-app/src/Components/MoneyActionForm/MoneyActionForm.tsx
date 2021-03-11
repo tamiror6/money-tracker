@@ -29,7 +29,7 @@ export const MoneyActionForm:React.FC<IMoneyActionFormProps> = (props) => {
         }
       }
 
-     
+
     return (
       <div>
         <input data-testid="amount" value={amountInput} onChange={(e)=>{setAmountInput(e.target.value)}}></input>
